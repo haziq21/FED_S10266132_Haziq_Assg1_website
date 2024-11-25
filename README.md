@@ -4,22 +4,8 @@ See the wireframe on Figma [here](https://www.figma.com/design/hsGh7RcB387Kdhdtj
 
 ## Idea
 
-Learning management system (LMS) for Polytechnics and ITEs (i.e. POLITEMall clone).
+Spotify clone.
 
-**External user’s goal:** The site's users are Polytechnic and ITE students looking to access module content and submit assignments via the platform.
+**External user’s goal:** The site's users are people who want to listen to various genres of music at home and on the go.
 
-**Site owner's goal:** The Polytechnics and ITEs are looking to
-
-1. Make module content available to students in a convenient manner to aid in their learning.
-2. Receive assignment submissions in a way that allow lecturers convenient access, increasing staff productivity.
-
-**Potential features to include:**
-
-- Quick and convenient access to all modules and module contents.
-- Link to submission page on assignment brief page, and vice versa.
-- File preview cards.
-
-**Suggested Javascript features to include:**
-
-- Global `ctrl+k` search bar to search for modules and activity pages.
-- "Mark as seen" for activity pages.
+**Site owner's goal:** Spotify is interested generating revenue through users paying for a subscription or by showing users advertisements.
