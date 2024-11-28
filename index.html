@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="reset.css" />
@@ -17,79 +17,104 @@
 </head>
 
 <body>
-  <section class="player">
-    <div class="player__img-wrapper">
-      <img src="assets/albums/super-shy.jpeg" alt="Album cover" class="player__img">
-    </div>
+  <!-- Re-usable SVGs -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+      <symbol id="skip-prev" viewBox="0 -960 960 960">
+        <path d="M194.67-214.67v-530.66h84v530.66h-84Zm570.66 0L376-480l389.33-265.33v530.66Z" />
+      </symbol>
 
-    <h3 class="player__title">Super Shy</h3>
-    <p class="player__description">NewJeans</p>
+      <symbol id="pause-mobile" viewBox="0 -960 960 960">
+        <path d="M560-200v-560h160v560H560Zm-320 0v-560h160v560H240Z" />
+      </symbol>
 
-    <div class="player__controls">
-      <button class="player__skip-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-          <path d="M194.67-214.67v-530.66h84v530.66h-84Zm570.66 0L376-480l389.33-265.33v530.66Z" />
-        </svg>
-      </button>
+      <symbol id="pause-desktop" viewBox="0 -960 960 960">
+        <path d="M549-171v-620h212v620H549Zm-350 0v-620h212v620H199Z" />
+      </symbol>
 
-      <button class="player__btn">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-          class="player__btn-icon player__btn-icon--small">
-          <path d="M560-200v-560h160v560H560Zm-320 0v-560h160v560H240Z" />
-        </svg>
+      <symbol id="skip-next" viewBox="0 -960 960 960">
+        <path d="M681.33-214.67v-530.66h84v530.66h-84Zm-486.66 0v-530.66L584-480 194.67-214.67Z" />
+      </symbol>
 
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-          class="player__btn-icon player__btn-icon--big">
-          <path d="M549-171v-620h212v620H549Zm-350 0v-620h212v620H199Z" />
-        </svg>
-      </button>
+      <symbol id="back" viewBox="0 -960 960 960">
+        <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+      </symbol>
+    </defs>
+  </svg>
 
-      <button class="player__skip-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-          <path d="M681.33-214.67v-530.66h84v530.66h-84Zm-486.66 0v-530.66L584-480 194.67-214.67Z" />
-        </svg>
-      </button>
-    </div>
-
-    <div class="player__timeline-wrapper">
-      <span class="player__timestamp">0:00</span>
-      <div class="player__timeline">
-        <div class="player__elapsed" style="width: 30%;"></div>
+  <article id="main">
+    <section class="player">
+      <div class="player__img-wrapper">
+        <img src="assets/albums/super-shy.jpeg" alt="Album cover" class="player__img">
       </div>
-      <span class="player__timestamp">2:20</span>
-    </div>
-  </section>
-  <div class="player__bg-fade"></div>
 
-  <section class="recent-tracks">
-    <a href="#" class="track-card">
-      <img src="assets/albums/to-love-in-the-21st-century.jpeg" alt="Album cover" class="track-card__img" />
-      <span>to love in the 21st century</span>
-    </a>
+      <h1 class="player__title">Super Shy</h1>
+      <p class="player__description">NewJeans</p>
 
-    <a href="#" class="track-card">
-      <img src="assets/albums/ed-sheeran.jpeg" alt="" class="track-card__img" />
-      <span>Ed Sheeran</span>
-    </a>
+      <div class="player__controls">
+        <button class="player__skip-btn">
+          <svg height="24px" width="24px" fill="#ffffff">
+            <use href="#skip-prev" />
+          </svg>
+        </button>
 
-    <a href="#" class="track-card">
-      <img src="assets/albums/john-legend.jpeg" alt="" class="track-card__img" />
-      <span>John Legend</span>
-    </a>
+        <button class="player__btn">
+          <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--mobile">
+            <use href="#pause-mobile" />
+          </svg>
+          <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--desktop">
+            <use href="#pause-desktop" />
+          </svg>
+        </button>
 
-    <a href="#" class="track-card">
-      <img src="assets/albums/yoasobi.jpeg" alt="" class="track-card__img" />
-      <span>YOASOBI</span>
-    </a>
+        <button class="player__skip-btn">
+          <svg height="24px" width="24px" fill="#ffffff">
+            <use href="#skip-next" />
+          </svg>
+        </button>
+      </div>
 
-    <a href="#" class="track-card">
-      <img src="assets/albums/golden.jpeg" alt="" class="track-card__img" />
-      <span>GOLDEN</span>
-    </a>
+      <div class="player__timeline-wrapper">
+        <span class="player__timestamp">0:00</span>
+        <div class="player__timeline">
+          <div class="player__elapsed" style="width: 30%;"></div>
+        </div>
+        <span class="player__timestamp">2:20</span>
+      </div>
+    </section>
 
-    <a href="#" class="track-card">
-      <img src="assets/albums/the-book-3.jpeg" alt="" class="track-card__img" />
-      <span>THE BOOK 3</span>
+    <div class="fade"></div>
+
+    <section class="recent-tracks">
+      <a href="#" class="track-card">
+        <img src="assets/albums/to-love-in-the-21st-century.jpeg" alt="Album cover" class="track-card__img" />
+        <span>to love in the 21st century</span>
+      </a>
+
+      <a href="#" class="track-card">
+        <img src="assets/albums/ed-sheeran.jpeg" alt="" class="track-card__img" />
+        <span>Ed Sheeran</span>
+      </a>
+
+      <a href="#" class="track-card">
+        <img src="assets/albums/john-legend.jpeg" alt="" class="track-card__img" />
+        <span>John Legend</span>
+      </a>
+
+      <a href="#" class="track-card">
+        <img src="assets/albums/yoasobi.jpeg" alt="" class="track-card__img" />
+        <span>YOASOBI</span>
+      </a>
+
+      <a href="#" class="track-card">
+        <img src="assets/albums/golden.jpeg" alt="" class="track-card__img" />
+        <span>GOLDEN</span>
+      </a>
+
+      <a href="#" class="track-card">
+        <img src="assets/albums/the-book-3.jpeg" alt="" class="track-card__img" />
+        <span>THE BOOK 3</span>
+      </a>
 
       <a href="#" class="track-card">
         <img src="assets/albums/why-dont-we.jpeg" alt="" class="track-card__img" />
@@ -100,101 +125,160 @@
         <img src="assets/albums/supernatural.jpeg" alt="" class="track-card__img" />
         <span>Supernatural</span>
       </a>
+    </section>
+
+    <h2 class="section-title">Made For Haziq</h2>
+
+    <section class="mixes">
+      <a href="#" class="mix-card mix-card--size-normal">
+        <img src="assets/albums/daily-mix-1.jpeg" alt="Mix cover" class="mix-card__img">
+        <p class="mix-card__text mix-card__text--double-line">NewJeans, SEVENTEEN, LE SSERAFIM and more</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-normal">
+        <img src="assets/albums/daily-mix-2.jpeg" alt="Mix cover" class="mix-card__img">
+        <p class="mix-card__text mix-card__text--double-line">Maroon 5, Bruno Mars, Ariana Grande and more</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-normal">
+        <img src="assets/albums/daily-mix-3.jpeg" alt="Mix cover" class="mix-card__img">
+        <p class="mix-card__text mix-card__text--double-line">RADWIMPS, YOASOBI, Fujii Kaze and more</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-normal">
+        <img src="assets/albums/daily-mix-4.jpeg" alt="Mix cover" class="mix-card__img">
+        <p class="mix-card__text mix-card__text--double-line">SEVENTEEN, Red Velvet, TWICE and more</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-normal">
+        <img src="assets/albums/daily-mix-5.jpeg" alt="Mix cover" class="mix-card__img">
+        <p class="mix-card__text mix-card__text--double-line">Ed Sheeran, Lewis Capaldi, Adele and more</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-normal">
+        <img src="assets/albums/daily-mix-6.jpeg" alt="Mix cover" class="mix-card__img">
+        <p class="mix-card__text mix-card__text--double-line">Rocco, Chris James, EASHA and more</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-normal">
+        <img src="assets/albums/dj.jpg" alt="Mix cover" class="mix-card__img">
+        <p class="mix-card__text mix-card__text--double-line">All kinds of music, selected by your own AI DJ.</p>
+      </a>
+    </section>
+
+    <h2 class="section-title">Recently played</h2>
+
+    <section class="mixes">
+      <a href="#" class="mix-card mix-card--size-small">
+        <img src="assets/albums/to-love-in-the-21st-century.jpeg" alt="Album cover"
+          class="mix-card__img mix-card__img--rounded">
+        <h3 class="mix-card__text mix-card__text--title mix-card__text--single-line">to love in the 21st century</h3>
+        <p class="mix-card__text mix-card__text--single-line">Album • Lyn Lapid</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-small">
+        <img src="assets/albums/ed-sheeran.jpeg" alt="Album cover" class="mix-card__img mix-card__img--circle">
+        <h3 class="mix-card__text mix-card__text--title mix-card__text--single-line">Ed Sheeran</h3>
+        <p class="mix-card__text mix-card__text--single-line">Artist</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-small">
+        <img src="assets/albums/the-book-3.jpeg" alt="Album cover" class="mix-card__img mix-card__img--rounded">
+        <h3 class="mix-card__text mix-card__text--title mix-card__text--single-line">THE BOOK 3</h3>
+        <p class="mix-card__text mix-card__text--single-line">Album • YOASOBI</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-small">
+        <img src="assets/albums/yoasobi.jpeg" alt="Album cover" class="mix-card__img mix-card__img--rounded">
+        <h3 class="mix-card__text mix-card__text--title mix-card__text--single-line">YOASOBI</h3>
+        <p class="mix-card__text mix-card__text--single-line">Artist</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-small">
+        <img src="assets/albums/golden.jpeg" alt="Album cover" class="mix-card__img mix-card__img--rounded">
+        <h3 class="mix-card__text mix-card__text--title mix-card__text--single-line">GOLDEN</h3>
+        <p class="mix-card__text mix-card__text--single-line">Album • Jung Kook</p>
+      </a>
+    </section>
+
+    <h2 class="section-title">Your top mixes</h2>
+
+    <section class="mixes">
+      <a href="#" class="mix-card mix-card--size-normal">
+        <img src="assets/albums/nicky-youre-mix.jpeg" alt="Mix cover" class="mix-card__img mix-card__img--rounded">
+        <p class="mix-card__text mix-card__text--double-line">Sabrina Carpenter, Ruth B. and Em Beihold</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-normal">
+        <img src="assets/albums/upbeat-mix.jpeg" alt="Mix cover" class="mix-card__img mix-card__img--rounded">
+        <p class="mix-card__text mix-card__text--double-line">Ed Sheeran, Em Beihold, Maroon 5 and more</p>
+      </a>
+
+      <a href="#" class="mix-card mix-card--size-normal">
+        <img src="assets/albums/k-pop-mix.jpeg" alt="Mix cover" class="mix-card__img mix-card__img--rounded">
+        <p class="mix-card__text mix-card__text--double-line">Stray Kids, BABYMONSTER and more</p>
+      </a>
+    </section>
+  </article>
+
+  <section class="extra-content" id="extra-content" style="display: none;">
+    <video src="assets/albums/supernatural.mp4" autoplay muted loop class="extra-content__video fixed-when-static"
+      id="extra-content__video"></video>
+
+    <button id="back-btn" class="extra-content__back fixed-when-static">
+      <svg height="24px" width="24px" fill="#ffffff">
+        <use href="#back" />
+      </svg>
+    </button>
+
+    <div class="extra-player">
+      <div class="extra-player__img-wrapper">
+        <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="extra-player__img">
+      </div>
+
+      <h3 class="extra-player__title">Supernatural</h3>
+      <p class="extra-player__description">NewJeans</p>
+
+      <div class="extra-player__timeline-wrapper">
+        <div class="extra-player__timeline">
+          <div class="extra-player__elapsed" style="width: 30%;"></div>
+        </div>
+        <span class="extra-player__timestamp">0:00</span>
+        <span class="extra-player__timestamp extra-player__timestamp--right">2:20</span>
+      </div>
+
+      <div class="extra-player__controls">
+        <button class="extra-player__skip-btn">
+          <svg height="32px" width="32px" fill="#ffffff">
+            <use href="#skip-prev" />
+          </svg>
+        </button>
+
+        <button class="extra-player__btn">
+          <svg height="32px" width="32px" class="extra-player__btn-icon" fill="#000000">
+            <use href="#pause-mobile" />
+          </svg>
+        </button>
+
+        <button class="extra-player__skip-btn">
+          <svg height="32px" width="32px" fill="#ffffff">
+            <use href="#skip-next" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <section class="info-card">
+      <h2 class="info-card__title">NewJeans</h2>
+      <p class="info-card__subtitle">15,190,183 monthly listeners</p>
+      <p>NewJeans (MINJI, HANNI, DANIELLE, HAERIN and HYEIN) made their debut on July 22, 2022 as the first group to
+        debut from ADOR, an independent label under HYBE led by Hee Jin Min.</p>
+    </section>
+
+    <div class="extra-content__fade"></div>
   </section>
 
-  <h2 class="section-title">Made For Haziq</h2>
-
-  <section class="mixes">
-    <a href="#" class="mix-card mix-card--size-normal">
-      <img src="assets/albums/daily-mix-1.jpeg" alt="Mix cover" class="mix-card__img">
-      <p class="mix-card__text mix-card__text--double-line">NewJeans, SEVENTEEN, LE SSERAFIM and more</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-normal">
-      <img src="assets/albums/daily-mix-2.jpeg" alt="Mix cover" class="mix-card__img">
-      <p class="mix-card__text mix-card__text--double-line">Maroon 5, Bruno Mars, Ariana Grande and more</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-normal">
-      <img src="assets/albums/daily-mix-3.jpeg" alt="Mix cover" class="mix-card__img">
-      <p class="mix-card__text mix-card__text--double-line">RADWIMPS, YOASOBI, Fujii Kaze and more</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-normal">
-      <img src="assets/albums/daily-mix-4.jpeg" alt="Mix cover" class="mix-card__img">
-      <p class="mix-card__text mix-card__text--double-line">SEVENTEEN, Red Velvet, TWICE and more</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-normal">
-      <img src="assets/albums/daily-mix-5.jpeg" alt="Mix cover" class="mix-card__img">
-      <p class="mix-card__text mix-card__text--double-line">Ed Sheeran, Lewis Capaldi, Adele and more</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-normal">
-      <img src="assets/albums/daily-mix-6.jpeg" alt="Mix cover" class="mix-card__img">
-      <p class="mix-card__text mix-card__text--double-line">Rocco, Chris James, EASHA and more</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-normal">
-      <img src="assets/albums/dj.jpg" alt="Mix cover" class="mix-card__img">
-      <p class="mix-card__text mix-card__text--double-line">All kinds of music, selected by your own AI DJ.</p>
-    </a>
-  </section>
-
-  <h2 class="section-title">Recently played</h2>
-
-  <section class="mixes">
-    <a href="#" class="mix-card mix-card--size-small">
-      <img src="assets/albums/to-love-in-the-21st-century.jpeg" alt="Album cover"
-        class="mix-card__img mix-card__img--rounded">
-      <h3 class="mix-card__text mix-card__text--title mix-card__text--single-line">to love in the 21st century</h3>
-      <p class="mix-card__text mix-card__text--single-line">Album • Lyn Lapid</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-small">
-      <img src="assets/albums/ed-sheeran.jpeg" alt="Album cover" class="mix-card__img mix-card__img--circle">
-      <h3 class="mix-card__text mix-card__text--title mix-card__text--single-line">Ed Sheeran</h3>
-      <p class="mix-card__text mix-card__text--single-line">Artist</p>
-    </a>
-
-
-    <a href="#" class="mix-card mix-card--size-small">
-      <img src="assets/albums/the-book-3.jpeg" alt="Album cover" class="mix-card__img mix-card__img--rounded">
-      <h3 class="mix-card__text mix-card__text--title mix-card__text--single-line">THE BOOK 3</h3>
-      <p class="mix-card__text mix-card__text--single-line">Album • YOASOBI</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-small">
-      <img src="assets/albums/yoasobi.jpeg" alt="Album cover" class="mix-card__img mix-card__img--rounded">
-      <h3 class="mix-card__text mix-card__text--title mix-card__text--single-line">YOASOBI</h3>
-      <p class="mix-card__text mix-card__text--single-line">Artist</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-small">
-      <img src="assets/albums/golden.jpeg" alt="Album cover" class="mix-card__img mix-card__img--rounded">
-      <h3 class="mix-card__text mix-card__text--title mix-card__text--single-line">GOLDEN</h3>
-      <p class="mix-card__text mix-card__text--single-line">Album • Jung Kook</p>
-    </a>
-  </section>
-
-  <h2 class="section-title">Your top mixes</h2>
-
-  <section class="mixes">
-    <a href="#" class="mix-card mix-card--size-normal">
-      <img src="assets/albums/nicky-youre-mix.jpeg" alt="Mix cover" class="mix-card__img mix-card__img--rounded">
-      <p class="mix-card__text mix-card__text--double-line">Sabrina Carpenter, Ruth B. and Em Beihold</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-normal">
-      <img src="assets/albums/upbeat-mix.jpeg" alt="Mix cover" class="mix-card__img mix-card__img--rounded">
-      <p class="mix-card__text mix-card__text--double-line">Ed Sheeran, Em Beihold, Maroon 5 and more</p>
-    </a>
-
-    <a href="#" class="mix-card mix-card--size-normal">
-      <img src="assets/albums/k-pop-mix.jpeg" alt="Mix cover" class="mix-card__img mix-card__img--rounded">
-      <p class="mix-card__text mix-card__text--double-line">Stray Kids, BABYMONSTER and more</p>
-    </a>
-  </section>
+  <script src="script.js"></script>
 </body>
 
 </html>
