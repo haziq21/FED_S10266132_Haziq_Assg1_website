@@ -91,8 +91,7 @@ body {
 .mixes {
   display: flex;
   gap: 1rem;
-  margin: 0 calc(-1 * var(--body-x-padding)) 2.25rem
-    calc(-1 * var(--body-x-padding));
+  margin: 0 calc(-1 * var(--body-x-padding)) 2.25rem calc(-1 * var(--body-x-padding));
   padding: 0 var(--body-x-padding);
   overflow: scroll;
   -ms-overflow-style: none; /* For IE and Edge */
@@ -296,7 +295,6 @@ body {
   height: fit-content;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 1rem;
-  overflow: hidden;
 }
 
 .player__elapsed {
@@ -392,8 +390,19 @@ body {
   }
 
   .player__elapsed {
+    position: relative;
     height: 0.25rem;
+  }
+
+  .player__timeline:hover .player__elapsed::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    transform: translateY(-25%);
     background-color: #ffffff;
+    border-radius: 50%;
   }
 }
 
@@ -483,7 +492,6 @@ body {
 .extra-player__timeline {
   grid-column: span 2;
   background-color: rgba(255, 255, 255, 0.2);
-  height: 0.25rem;
   width: 100%;
   margin-top: 1.25rem;
   border-radius: 10px;
@@ -492,7 +500,7 @@ body {
 
 .extra-player__elapsed {
   position: relative;
-  height: 100%;
+  height: 0.25rem;
   background-color: #ffffff;
   border-radius: 10px;
 }
