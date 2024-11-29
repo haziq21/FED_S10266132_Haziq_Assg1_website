@@ -221,11 +221,11 @@
     </section>
   </article>
 
-  <section class="extra-content" id="extra-content" style="display: none;">
-    <video src="assets/albums/supernatural.mp4" autoplay muted loop class="extra-content__video fixed-when-static"
-      id="extra-content__video"></video>
+  <section class="overlay" id="overlay" style="display: none;">
+    <video src="assets/albums/supernatural.mp4" autoplay muted loop class="overlay__video fixed-when-overlaid"
+      id="overlay__video"></video>
 
-    <button id="back-btn" class="extra-content__back fixed-when-static">
+    <button id="back-btn" class="overlay__back fixed-when-overlaid">
       <svg height="24px" width="24px" fill="#ffffff">
         <use href="#back" />
       </svg>
@@ -275,10 +275,10 @@
         debut from ADOR, an independent label under HYBE led by Hee Jin Min.</p>
     </section>
 
-    <div class="extra-content__fade"></div>
+    <div class="overlay__fade"></div>
   </section>
 
-  <script src="script.js"></script>
+  <script src="script.js" type="module"></script>
 </body>
 
 </html>
