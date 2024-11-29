@@ -11,6 +11,7 @@ function handleMediaQueryChange(e) {
 
 mediaQuery.addEventListener("change", handleMediaQueryChange);
 handleMediaQueryChange(mediaQuery);
+document.getElementById("back-btn").addEventListener("click", transitionFromFullScreenPlayerMobile);
 
 const extraContentElem = document.getElementById("extra-content");
 const videoElem = document.getElementById("extra-content__video");
@@ -69,4 +70,23 @@ function transitionFromFullScreenPlayerMobile() {
   );
 }
 
-document.getElementById("back-btn").addEventListener("click", transitionFromFullScreenPlayerMobile);
+const totalRuntime = 140_000; // In milliseconds
+const startTime = Date.now();
+
+function updateTimeline() {
+  const elapsedRuntime = Date.now() - startTime;
+  document
+    .querySelectorAll(".player__elapsed, .extra-player__elapsed")
+    .forEach((el) => (el.style.width = `${(elapsedRuntime / totalRuntime) * 100}%`));
+
+  const remainingMinutes = Math.floor(elapsedRuntime / 1000 / 60);
+  const remainingSeconds = String(Math.round((elapsedRuntime / 1000) % 60));
+  document
+    .querySelectorAll(".player__timestamp:nth-of-type(1), .extra-player__timestamp:nth-of-type(1)")
+    .forEach((el) => (el.textContent = `${remainingMinutes}:${remainingSeconds.padStart(2, "0")}`));
+
+  // Keep updating the elapsed time until the song finished
+  if (elapsedRuntime < totalRuntime) requestAnimationFrame(updateTimeline);
+}
+
+requestAnimationFrame(updateTimeline);
