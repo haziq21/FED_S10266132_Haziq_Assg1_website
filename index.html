@@ -47,55 +47,7 @@
     </defs>
   </svg>
 
-  <article id="main">
-    <section class="player">
-      <div class="player__img-wrapper">
-        <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="player__img">
-      </div>
-
-      <h1 class="player__title">Supernatural</h1>
-      <p class="player__description">NewJeans</p>
-
-      <div class="player__controls">
-        <button class="player__skip-btn">
-          <svg height="24px" width="24px" fill="#ffffff">
-            <use href="#skip-prev" />
-          </svg>
-        </button>
-
-        <button class="player__btn">
-          <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--mobile">
-            <use href="#pause-mobile" />
-          </svg>
-          <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--desktop">
-            <use href="#pause-desktop" />
-          </svg>
-        </button>
-
-        <button class="player__skip-btn">
-          <svg height="24px" width="24px" fill="#ffffff">
-            <use href="#skip-next" />
-          </svg>
-        </button>
-      </div>
-
-      <div class="player__timeline-wrapper">
-        <span class="player__timestamp">0:00</span>
-        <div class="player__timeline">
-          <div class="player__elapsed"></div>
-        </div>
-        <span class="player__timestamp">2:20</span>
-      </div>
-
-      <button class="player__videos">
-        <svg height="24px" width="24px" fill="#ffffff">
-          <use href="#videos" />
-        </svg>
-      </button>
-    </section>
-
-    <div class="fade"></div>
-
+  <article id="main" class="article">
     <section class="recent-tracks">
       <a href="album" class="track-card">
         <img src="assets/albums/to-love-in-the-21st-century.jpeg" alt="Album cover" class="track-card__img" />
@@ -282,12 +234,61 @@
     <section class="info-card">
       <h2 class="info-card__title">NewJeans</h2>
       <p class="info-card__subtitle">15,190,183 monthly listeners</p>
-      <p>NewJeans (MINJI, HANNI, DANIELLE, HAERIN and HYEIN) made their debut on July 22, 2022 as the first group to
+      <p class="info-card__text">NewJeans (MINJI, HANNI, DANIELLE, HAERIN and HYEIN) made their debut on July 22, 2022
+        as the first group to
         debut from ADOR, an independent label under HYBE led by Hee Jin Min.</p>
     </section>
 
     <div class="overlay__fade"></div>
   </section>
+
+  <section class="player">
+    <div class="player__img-wrapper">
+      <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="player__img">
+    </div>
+
+    <h1 class="player__title">Supernatural</h1>
+    <p class="player__description">NewJeans</p>
+
+    <div class="player__controls">
+      <button class="player__skip-btn">
+        <svg height="24px" width="24px" fill="#ffffff">
+          <use href="#skip-prev" />
+        </svg>
+      </button>
+
+      <button class="player__btn">
+        <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--mobile">
+          <use href="#pause-mobile" />
+        </svg>
+        <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--desktop">
+          <use href="#pause-desktop" />
+        </svg>
+      </button>
+
+      <button class="player__skip-btn">
+        <svg height="24px" width="24px" fill="#ffffff">
+          <use href="#skip-next" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="player__timeline-wrapper">
+      <span class="player__timestamp">0:00</span>
+      <div class="player__timeline">
+        <div class="player__elapsed"></div>
+      </div>
+      <span class="player__timestamp">2:20</span>
+    </div>
+
+    <button id="video-player-btn" class="player__videos-btn">
+      <svg height="24px" width="24px" class="videos-btn__icon">
+        <use href="#videos" />
+      </svg>
+    </button>
+  </section>
+
+  <div class="fade"></div>
 
   <script src="script.js" type="module"></script>
 </body>

@@ -6,9 +6,9 @@
   --container: #2a2a2a;
   --container-dark: #1f1f1f;
   --text: #ffffff;
-  --text-muted: #9e9e9e;
+  --text-muted: #b9b9b9;
   --song-theme: #d36125;
-  --player: #285070;
+  --song-theme-muted: #7b3815;
   --black: #000000;
   --light-black: #4d4d4d;
 
@@ -28,8 +28,7 @@
 }
 
 body {
-  min-height: 100vh;
-  padding: 2.25rem var(--body-x-padding) 5rem var(--body-x-padding);
+  height: 100vh;
   background-color: var(--background);
   color: #ffffff;
   font-family: "Inter", sans-serif;
@@ -57,6 +56,30 @@ td {
   .recent-tracks {
     grid-template-columns: repeat(4, 1fr);
     margin-bottom: 3.25rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    display: grid;
+    grid:
+      "article video" 1fr
+      "player player" min-content
+      / 1fr auto;
+  }
+}
+
+.article {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+  padding: 2.25rem var(--body-x-padding) 5rem var(--body-x-padding);
+}
+
+@media screen and (min-width: 600px) {
+  .article {
+    grid-area: article;
   }
 }
 
@@ -111,7 +134,7 @@ td {
   gap: 1rem;
   margin: 0 calc(-1 * var(--body-x-padding)) 2.25rem calc(-1 * var(--body-x-padding));
   padding: 0 var(--body-x-padding);
-  overflow: scroll;
+  overflow-x: scroll;
   -ms-overflow-style: none; /* For IE and Edge */
   scrollbar-width: none; /* For Firefox */
 }
@@ -211,8 +234,8 @@ td {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  line-clamp: 2;
-  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 /* Player */
@@ -229,7 +252,7 @@ td {
     "image desc control" 1fr
     "timeline timeline timeline" auto
     / max-content 1fr auto;
-  background-color: var(--player);
+  background-color: var(--song-theme-muted);
   font-size: 0.75rem;
   border-radius: 8px;
   overflow: hidden;
@@ -322,27 +345,24 @@ td {
   border-radius: 1rem;
 }
 
-.player__videos {
+.player__videos-btn {
   display: none;
 }
 
 @media screen and (min-width: 600px) {
   .player {
+    grid-area: player;
     grid:
-      "image title control volume" 1fr
-      "image desc timeline volume" 1fr
+      "image title control video-toggle" 1fr
+      "image desc timeline video-toggle" 1fr
       / min-content auto 1fr auto;
-
+    position: relative;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: var(--black);
     border-radius: 0;
     font-size: 0.9rem;
-  }
-
-  .overlay__fade {
-    display: none;
   }
 
   .player__img-wrapper {
@@ -394,7 +414,7 @@ td {
   }
 
   .player__timeline-wrapper {
-    width: 70%;
+    width: 50vw;
     height: min-content;
     padding-top: 0.75rem;
     justify-self: center;
@@ -421,12 +441,28 @@ td {
     width: 0.5rem;
     height: 0.5rem;
     translate: 50% -25%;
-    background-color: #ffffff;
+    background-color: var(--text);
     border-radius: 50%;
+  }
+
+  .player__videos-btn {
+    grid-area: video-toggle;
+    display: block;
+    margin-right: 2rem;
+  }
+
+  .videos-btn__icon {
+    fill: var(--text-muted);
   }
 }
 
-/* Extra content */
+@media screen and (min-width: 1200px) {
+  .player__videos-btn {
+    margin-right: 3rem;
+  }
+}
+
+/* Overlay */
 
 .overlay {
   z-index: 20;
@@ -453,9 +489,10 @@ td {
   z-index: -10;
   position: absolute;
   top: 65vh;
+  left: 0;
   bottom: 0;
   width: 100%;
-  background-image: linear-gradient(#12121200, #121212 18rem, #121212);
+  background-image: linear-gradient(transparent, #121212 18rem, #121212);
 }
 
 .overlay__back {
@@ -468,18 +505,33 @@ td {
 
 @media screen and (min-width: 600px) {
   .overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
+    grid-area: video;
+    position: relative;
     max-width: 27rem;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
     background-color: var(--black);
+    overflow: hidden;
+  }
+
+  .overlay__back {
+    display: none;
   }
 
   .overlay__video {
     position: relative;
     z-index: unset;
     width: 100%;
+    height: calc(100% - 5rem);
+    border-radius: 6px;
+  }
+
+  .overlay__fade {
+    z-index: unset;
+    position: relative;
+    top: unset;
+    translate: 0 -100%;
+    height: 8rem;
+    background-image: linear-gradient(transparent, var(--black));
   }
 }
 
@@ -615,8 +667,25 @@ td {
 }
 
 .info-card__subtitle {
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 600px) {
+  .info-card {
+    z-index: 10;
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+
+  .info-card__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 /* Album header */

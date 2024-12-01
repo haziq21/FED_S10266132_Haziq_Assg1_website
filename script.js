@@ -14,30 +14,32 @@ const overlayTimelineElems = {
 };
 const timeline = new Timeline(140_000, mainTimelineElems);
 
-const mediaQuery = window.matchMedia("(min-width: 600px)");
-mediaQuery.addEventListener("change", handleMediaQueryChange);
-handleMediaQueryChange(mediaQuery);
-
 // The back button on mobile will close the full-screen video player
 document.getElementById("back-btn").addEventListener("click", closeFullScreenPlayerMobile);
 
-let mainPageScroll;
 const overlayElem = document.getElementById("overlay");
 const mainElem = document.getElementById("main");
 const fixedOverlayChildElems = document.querySelectorAll(".overlay .fixed-when-overlaid");
 
+const mediaQuery = window.matchMedia("(min-width: 600px)");
+mediaQuery.addEventListener("change", handleMediaQueryChange);
+handleMediaQueryChange(mediaQuery);
+
 function handleMediaQueryChange(e) {
   if (e.matches) {
+    document.getElementById("video-player-btn").addEventListener("click", toggleVideoPlayerDesktop);
     document.querySelector(".player").removeEventListener("click", openFullScreenPlayerMobile);
+
+    transitionFromMobileToDesktop(getDesktopVideoPlayerState());
   } else {
     document.querySelector(".player").addEventListener("click", openFullScreenPlayerMobile);
+    document.getElementById("video-player-btn").removeEventListener("click", toggleVideoPlayerDesktop);
+
+    transitionFromDesktopToMobile(getDesktopVideoPlayerState());
   }
 }
 
 function openFullScreenPlayerMobile() {
-  // Preserve the scroll position of the main page
-  mainPageScroll = window.scrollY;
-
   // Prepare the elements for the transition animation
   overlayElem.style.position = "fixed";
   overlayElem.style.top = "100vh";
@@ -58,8 +60,8 @@ function openFullScreenPlayerMobile() {
         fixedOverlayChildElems.forEach((elem) => (elem.style.position = "fixed"));
         mainElem.style.display = "none";
         overlayElem.style.position = "absolute";
-        window.scrollTo(0, 0);
         timeline.bind(overlayTimelineElems);
+        setVideoPlayerState(true);
       },
       { once: true }
     );
@@ -75,7 +77,6 @@ function closeFullScreenPlayerMobile() {
 
   mainElem.style.display = "block";
   overlayElem.style.top = "100vh";
-  window.scrollTo(0, mainPageScroll);
 
   // Wait for the overlay to finish moving into place before finalising the styles
   overlayElem.addEventListener(
@@ -83,7 +84,56 @@ function closeFullScreenPlayerMobile() {
     () => {
       overlayElem.style.display = "none";
       timeline.bind(mainTimelineElems);
+      setVideoPlayerState(false);
     },
     { once: true }
   );
+}
+
+function transitionFromMobileToDesktop(playerIsOpen) {
+  overlayElem.style.position = "relative";
+  overlayElem.style.top = "unset";
+  fixedOverlayChildElems.forEach((el) => (el.style.position = "relative"));
+
+  if (playerIsOpen) {
+    overlayElem.style.display = "block";
+    mainElem.style.display = "block";
+    timeline.bind(mainTimelineElems);
+  }
+}
+
+/**
+ * Update styles and bind the `Timeline` to the appropriate DOM elements, to be
+ * called when the screen size changes from a desktop size to a mobile size.
+ * @param {boolean} playerIsOpen Whether the video player is open
+ */
+function transitionFromDesktopToMobile(playerIsOpen) {
+  if (playerIsOpen) {
+    overlayElem.style.position = "absolute";
+    overlayElem.style.top = "0";
+    overlayElem.style.display = "block";
+    fixedOverlayChildElems.forEach((elem) => (elem.style.position = "fixed"));
+    mainElem.style.display = "none";
+
+    window.scrollTo(0, 0);
+    timeline.bind(overlayTimelineElems);
+  } else {
+    overlayElem.style.position = "fixed";
+    overlayElem.style.top = "100vh";
+    mainElem.style.display = "block";
+  }
+}
+
+function toggleVideoPlayerDesktop() {
+  const currentlyOpen = getDesktopVideoPlayerState();
+  overlayElem.style.display = currentlyOpen ? "none" : "block";
+  setVideoPlayerState(!currentlyOpen);
+}
+
+function getDesktopVideoPlayerState() {
+  return JSON.parse(localStorage.getItem("desktopVideoPlayerOpen") ?? "false");
+}
+
+function setVideoPlayerState(open) {
+  localStorage.setItem("desktopVideoPlayerOpen", JSON.stringify(open));
 }

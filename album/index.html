@@ -58,6 +58,136 @@
     </defs>
   </svg>
 
+  <article id="main" class="article">
+    <section class="header">
+      <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="header__img">
+      <h1 class="header__title">Supernatural</h1>
+      <img src="assets/albums/newjeans.jpeg" alt="Artist profile picture" class="header__pfp">
+      <span class="header__artist">NewJeans</span>
+      <p class="header__description">EP • 2024</p>
+      <button class="header__btn">
+        <svg width="24px" height="24px" class="header__btn-icon">
+          <use xlink:href="#play"></use>
+        </svg>
+      </button>
+    </section>
+
+    <div class="album-fade"></div>
+
+    <table class="tracklist">
+      <thead class="tracklist__head">
+        <tr>
+          <th class="tracklist__header tracklist__header--number">#</th>
+          <th class="tracklist__header tracklist__header--title">Title</th>
+          <th class="tracklist__header tracklist__header--plays">Plays</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="track__number">1</td>
+          <td class="track__main">
+            <p class="track__name">Supernatural</p>
+            <p class="track__artist">NewJeans</p>
+          </td>
+          <td class="track__plays">107,087,544</td>
+        </tr>
+        <tr>
+          <td class="track__number">2</td>
+          <td class="track__main">
+            <p class="track__name">Right Now</p>
+            <p class="track__artist">NewJeans</p>
+          </td>
+          <td class="track__plays">40,963,607</td>
+        </tr>
+        <tr>
+          <td class="track__number">3</td>
+          <td class="track__main">
+            <p class="track__name">Supernatural (Instrumental)</p>
+            <p class="track__artist">NewJeans</p>
+          </td>
+          <td class="track__plays">3,089,041</td>
+        </tr>
+        <tr>
+          <td class="track__number">4</td>
+          <td class="track__main">
+            <p class="track__name">Right Now (Instrumental)</p>
+            <p class="track__artist">NewJeans</p>
+          </td>
+          <td class="track__plays">1,957,709</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="tracklist-summary">4 songs • 11 min 42 sec</p>
+
+    <a href=".." class="home-link">
+      <svg height="24px" width="24px" fill="#ffffff" class="home-link__icon--home">
+        <use href="#home" />
+      </svg>
+
+      <svg height="24px" width="24px" fill="#ffffff" class="home-link__icon--back">
+        <use href="#back" />
+      </svg>
+    </a>
+  </article>
+
+  <section class="overlay" id="overlay" style="display: none;">
+    <video src="assets/albums/supernatural.mp4" autoplay muted loop class="overlay__video fixed-when-overlaid"
+      id="overlay__video"></video>
+
+    <button id="back-btn" class="overlay__back fixed-when-overlaid">
+      <svg height="24px" width="24px" fill="#ffffff">
+        <use href="#back" />
+      </svg>
+    </button>
+
+    <div class="extra-player">
+      <div class="extra-player__img-wrapper">
+        <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="extra-player__img">
+      </div>
+
+      <h3 class="extra-player__title">Supernatural</h3>
+      <p class="extra-player__description">NewJeans</p>
+
+      <div class="extra-player__timeline-wrapper">
+        <div class="extra-player__timeline">
+          <div class="extra-player__elapsed"></div>
+        </div>
+        <span class="extra-player__timestamp">0:00</span>
+        <span class="extra-player__timestamp extra-player__timestamp--right">2:20</span>
+      </div>
+
+      <div class="extra-player__controls">
+        <button class="extra-player__skip-btn">
+          <svg height="32px" width="32px" fill="#ffffff">
+            <use href="#skip-prev" />
+          </svg>
+        </button>
+
+        <button class="extra-player__btn">
+          <svg height="32px" width="32px" class="extra-player__btn-icon" fill="#000000">
+            <use href="#pause-mobile" />
+          </svg>
+        </button>
+
+        <button class="extra-player__skip-btn">
+          <svg height="32px" width="32px" fill="#ffffff">
+            <use href="#skip-next" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <section class="info-card">
+      <h2 class="info-card__title">NewJeans</h2>
+      <p class="info-card__subtitle">15,190,183 monthly listeners</p>
+      <p>NewJeans (MINJI, HANNI, DANIELLE, HAERIN and HYEIN) made their debut on July 22, 2022 as the first group to
+        debut from ADOR, an independent label under HYBE led by Hee Jin Min.</p>
+    </section>
+
+    <div class="overlay__fade"></div>
+  </section>
+
   <section class="player">
     <div class="player__img-wrapper">
       <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="player__img">
@@ -97,143 +227,11 @@
       <span class="player__timestamp">2:20</span>
     </div>
 
-    <button class="player__videos">
-      <svg height="24px" width="24px" fill="#ffffff">
+    <button id="video-player-btn" class="player__videos-btn">
+      <svg height="24px" width="24px" class="videos-btn__icon">
         <use href="#videos" />
       </svg>
     </button>
-  </section>
-
-  <section>
-    <div id="main">
-      <section class="header">
-        <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="header__img">
-        <h1 class="header__title">Supernatural</h1>
-        <img src="assets/albums/newjeans.jpeg" alt="Artist profile picture" class="header__pfp">
-        <span class="header__artist">NewJeans</span>
-        <p class="header__description">EP • 2024</p>
-        <button class="header__btn">
-          <svg width="24px" height="24px" class="header__btn-icon">
-            <use xlink:href="#play"></use>
-          </svg>
-        </button>
-      </section>
-
-      <div class="album-fade"></div>
-
-      <table class="tracklist">
-        <thead class="tracklist__head">
-          <tr>
-            <th class="tracklist__header tracklist__header--number">#</th>
-            <th class="tracklist__header tracklist__header--title">Title</th>
-            <th class="tracklist__header tracklist__header--plays">Plays</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="track__number">1</td>
-            <td class="track__main">
-              <p class="track__name">Supernatural</p>
-              <p class="track__artist">NewJeans</p>
-            </td>
-            <td class="track__plays">107,087,544</td>
-          </tr>
-          <tr>
-            <td class="track__number">2</td>
-            <td class="track__main">
-              <p class="track__name">Right Now</p>
-              <p class="track__artist">NewJeans</p>
-            </td>
-            <td class="track__plays">40,963,607</td>
-          </tr>
-          <tr>
-            <td class="track__number">3</td>
-            <td class="track__main">
-              <p class="track__name">Supernatural (Instrumental)</p>
-              <p class="track__artist">NewJeans</p>
-            </td>
-            <td class="track__plays">3,089,041</td>
-          </tr>
-          <tr>
-            <td class="track__number">4</td>
-            <td class="track__main">
-              <p class="track__name">Right Now (Instrumental)</p>
-              <p class="track__artist">NewJeans</p>
-            </td>
-            <td class="track__plays">1,957,709</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p class="tracklist-summary">4 songs • 11 min 42 sec</p>
-
-      <a href=".." class="home-link">
-        <svg height="24px" width="24px" fill="#ffffff" class="home-link__icon--home">
-          <use href="#home" />
-        </svg>
-
-        <svg height="24px" width="24px" fill="#ffffff" class="home-link__icon--back">
-          <use href="#back" />
-        </svg>
-      </a>
-    </div>
-
-    <section class="overlay" id="overlay" style="display: none;">
-      <video src="assets/albums/supernatural.mp4" autoplay muted loop class="overlay__video fixed-when-overlaid"
-        id="overlay__video"></video>
-
-      <button id="back-btn" class="overlay__back fixed-when-overlaid">
-        <svg height="24px" width="24px" fill="#ffffff">
-          <use href="#back" />
-        </svg>
-      </button>
-
-      <div class="extra-player">
-        <div class="extra-player__img-wrapper">
-          <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="extra-player__img">
-        </div>
-
-        <h3 class="extra-player__title">Supernatural</h3>
-        <p class="extra-player__description">NewJeans</p>
-
-        <div class="extra-player__timeline-wrapper">
-          <div class="extra-player__timeline">
-            <div class="extra-player__elapsed"></div>
-          </div>
-          <span class="extra-player__timestamp">0:00</span>
-          <span class="extra-player__timestamp extra-player__timestamp--right">2:20</span>
-        </div>
-
-        <div class="extra-player__controls">
-          <button class="extra-player__skip-btn">
-            <svg height="32px" width="32px" fill="#ffffff">
-              <use href="#skip-prev" />
-            </svg>
-          </button>
-
-          <button class="extra-player__btn">
-            <svg height="32px" width="32px" class="extra-player__btn-icon" fill="#000000">
-              <use href="#pause-mobile" />
-            </svg>
-          </button>
-
-          <button class="extra-player__skip-btn">
-            <svg height="32px" width="32px" fill="#ffffff">
-              <use href="#skip-next" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <section class="info-card">
-        <h2 class="info-card__title">NewJeans</h2>
-        <p class="info-card__subtitle">15,190,183 monthly listeners</p>
-        <p>NewJeans (MINJI, HANNI, DANIELLE, HAERIN and HYEIN) made their debut on July 22, 2022 as the first group to
-          debut from ADOR, an independent label under HYBE led by Hee Jin Min.</p>
-      </section>
-
-      <div class="overlay__fade"></div>
-    </section>
   </section>
 
   <script src="script.js" type="module"></script>
