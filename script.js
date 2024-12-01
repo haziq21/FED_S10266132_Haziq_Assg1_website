@@ -69,6 +69,8 @@ function openFullScreenPlayerMobile() {
 }
 
 function closeFullScreenPlayerMobile() {
+  timeline.bind(mainTimelineElems);
+
   // Prepare the element for the transition animation
   overlayElem.style.position = "fixed";
   // Temporarily set to absolute instead of fixed to let them move with the
@@ -83,7 +85,6 @@ function closeFullScreenPlayerMobile() {
     "transitionend",
     () => {
       overlayElem.style.display = "none";
-      timeline.bind(mainTimelineElems);
       setVideoPlayerState(false);
     },
     { once: true }
@@ -96,9 +97,9 @@ function transitionFromMobileToDesktop(playerIsOpen) {
   fixedOverlayChildElems.forEach((el) => (el.style.position = "relative"));
 
   if (playerIsOpen) {
+    timeline.bind(mainTimelineElems);
     overlayElem.style.display = "block";
     mainElem.style.display = "block";
-    timeline.bind(mainTimelineElems);
   }
 }
 
@@ -109,14 +110,12 @@ function transitionFromMobileToDesktop(playerIsOpen) {
  */
 function transitionFromDesktopToMobile(playerIsOpen) {
   if (playerIsOpen) {
+    timeline.bind(overlayTimelineElems);
     overlayElem.style.position = "absolute";
     overlayElem.style.top = "0";
     overlayElem.style.display = "block";
     fixedOverlayChildElems.forEach((elem) => (elem.style.position = "fixed"));
     mainElem.style.display = "none";
-
-    window.scrollTo(0, 0);
-    timeline.bind(overlayTimelineElems);
   } else {
     overlayElem.style.position = "fixed";
     overlayElem.style.top = "100vh";
