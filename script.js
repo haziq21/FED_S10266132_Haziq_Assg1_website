@@ -5,14 +5,18 @@ const mainTimelineElems = {
   progressLine: document.querySelector(".player__elapsed"),
   elapsedTimestamp: document.querySelector(".player__timestamp:nth-of-type(1)"),
   runtimeTimestamp: document.querySelector(".player__timestamp:nth-of-type(2)"),
+  playerBtn: document.getElementById("player-btn"),
+  playerBtnClasses: { playing: "player__btn--playing", paused: "player__btn--paused" },
 };
 const overlayTimelineElems = {
   timeline: document.querySelector(".extra-player__timeline"),
   progressLine: document.querySelector(".extra-player__elapsed"),
   elapsedTimestamp: document.querySelector(".extra-player__timestamp:nth-of-type(1)"),
   runtimeTimestamp: document.querySelector(".extra-player__timestamp:nth-of-type(2)"),
+  playerBtn: document.getElementById("extra-player-btn"),
+  playerBtnClasses: { playing: "extra-player__btn--playing", paused: "extra-player__btn--paused" },
 };
-const timeline = new Timeline(140_000, mainTimelineElems);
+const timeline = new Timeline(140_000, mainTimelineElems, false);
 
 // The back button on mobile will close the full-screen video player
 document.getElementById("back-btn").addEventListener("click", closeFullScreenPlayerMobile);

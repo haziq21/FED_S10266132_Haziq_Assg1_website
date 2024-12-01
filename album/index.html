@@ -17,9 +17,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<!-- TODO: background--album -->
-
-<body class="background--album">
+<body>
   <!-- Re-usable SVGs -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <defs>
@@ -27,12 +25,12 @@
         <path d="M194.67-214.67v-530.66h84v530.66h-84Zm570.66 0L376-480l389.33-265.33v530.66Z" />
       </symbol>
 
-      <symbol id="pause-mobile" viewBox="0 -960 960 960">
+      <symbol id="pause" viewBox="0 -960 960 960">
         <path d="M560-200v-560h160v560H560Zm-320 0v-560h160v560H240Z" />
       </symbol>
 
-      <symbol id="pause-desktop" viewBox="0 -960 960 960">
-        <path d="M549-171v-620h212v620H549Zm-350 0v-620h212v620H199Z" />
+      <symbol id="play" viewBox="0 -960 960 960">
+        <path d="M311.87-185.41v-589.18L775.07-480l-463.2 294.59Z" />
       </symbol>
 
       <symbol id="skip-next" viewBox="0 -960 960 960">
@@ -46,10 +44,6 @@
       <symbol id="videos" viewBox="0 -960 960 960">
         <path
           d="M378.09-296.65 663.35-480 378.09-663.35v366.7ZM111.87-111.87v-736.26h736.26v736.26H111.87Zm91-91h554.26v-554.26H202.87v554.26Zm0 0v-554.26 554.26Z" />
-      </symbol>
-
-      <symbol id="play" viewBox="0 -960 960 960">
-        <path d="M311.87-185.41v-589.18L775.07-480l-463.2 294.59Z" />
       </symbol>
 
       <symbol id="home" viewBox="0 -960 960 960">
@@ -164,9 +158,13 @@
           </svg>
         </button>
 
-        <button class="extra-player__btn">
-          <svg height="32px" width="32px" class="extra-player__btn-icon" fill="#000000">
-            <use href="#pause-mobile" />
+        <button id="extra-player-btn" class="extra-player__btn extra-player__btn--playing">
+          <svg height="32px" width="32px" class="extra-player__btn-icon extra-player__btn-icon--playing" fill="#000000">
+            <use href="#pause" />
+          </svg>
+
+          <svg height="32px" width="32px" class="extra-player__btn-icon extra-player__btn-icon--paused" fill="#000000">
+            <use href="#play" />
           </svg>
         </button>
 
@@ -181,7 +179,8 @@
     <section class="info-card">
       <h2 class="info-card__title">NewJeans</h2>
       <p class="info-card__subtitle">15,190,183 monthly listeners</p>
-      <p>NewJeans (MINJI, HANNI, DANIELLE, HAERIN and HYEIN) made their debut on July 22, 2022 as the first group to
+      <p class="info-card__text">NewJeans (MINJI, HANNI, DANIELLE, HAERIN and HYEIN) made their debut on July 22, 2022
+        as the first group to
         debut from ADOR, an independent label under HYBE led by Hee Jin Min.</p>
     </section>
 
@@ -203,12 +202,12 @@
         </svg>
       </button>
 
-      <button class="player__btn">
-        <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--mobile">
-          <use href="#pause-mobile" />
+      <button id="player-btn" class="player__btn player__btn--playing">
+        <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--playing">
+          <use href="#pause" />
         </svg>
-        <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--desktop">
-          <use href="#pause-desktop" />
+        <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--paused">
+          <use href="#play" />
         </svg>
       </button>
 

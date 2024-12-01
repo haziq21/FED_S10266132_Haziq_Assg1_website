@@ -311,7 +311,8 @@ td {
   fill: var(--text);
 }
 
-.player__btn-icon--desktop {
+.player__btn--playing .player__btn-icon--paused,
+.player__btn--paused .player__btn-icon--playing {
   display: none;
 }
 
@@ -396,14 +397,6 @@ td {
 
   .player__btn-icon {
     fill: var(--black);
-  }
-
-  .player__btn-icon--desktop {
-    display: block;
-  }
-
-  .player__btn-icon--mobile {
-    display: none;
   }
 
   .player__skip-btn {
@@ -642,6 +635,11 @@ td {
   border: 0;
   border-radius: 50%;
   background-color: var(--text);
+}
+
+.extra-player__btn--playing .extra-player__btn-icon--paused,
+.extra-player__btn--paused .extra-player__btn-icon--playing {
+  display: none;
 }
 
 @media screen and (min-width: 600px) {
