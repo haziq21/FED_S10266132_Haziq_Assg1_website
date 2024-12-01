@@ -67,6 +67,12 @@ body {
   background-image: linear-gradient(transparent, var(--background));
 }
 
+@media screen and (min-width: 600px) {
+  .fade {
+    display: none;
+  }
+}
+
 /* Recent tracks */
 
 .recent-tracks {
