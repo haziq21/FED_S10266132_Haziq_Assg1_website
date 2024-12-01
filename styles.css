@@ -228,7 +228,7 @@ td {
     "image title control" 1fr
     "image desc control" 1fr
     "timeline timeline timeline" auto
-    / min-content 1fr auto;
+    / max-content 1fr auto;
   background-color: var(--player);
   font-size: 0.75rem;
   border-radius: 8px;
@@ -250,7 +250,8 @@ td {
 }
 
 .player__img {
-  min-width: 2.5rem;
+  width: 100%;
+  max-width: 2.5rem;
   border-radius: 6px;
 }
 
@@ -281,10 +282,6 @@ td {
   border: none;
   border-radius: 100px;
   padding: 0;
-}
-
-.player__btn:hover {
-  cursor: pointer;
 }
 
 .player__btn-icon {
@@ -396,10 +393,6 @@ td {
     padding: 0;
   }
 
-  .player__skip-btn:hover {
-    cursor: pointer;
-  }
-
   .player__timeline-wrapper {
     width: 70%;
     height: min-content;
@@ -468,7 +461,7 @@ td {
 .overlay__back {
   position: fixed;
   top: 1.5rem;
-  left: 1rem;
+  left: 1.25rem;
   background-color: transparent;
   border: 0;
 }
@@ -687,10 +680,6 @@ td {
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
-}
-
-.header__btn:hover {
-  cursor: pointer;
 }
 
 .header__btn-icon {
