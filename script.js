@@ -44,6 +44,8 @@ function handleMediaQueryChange(e) {
 }
 
 function openFullScreenPlayerMobile() {
+  timeline.bind(overlayTimelineElems);
+
   // Prepare the elements for the transition animation
   overlayElem.style.position = "fixed";
   overlayElem.style.top = "100vh";
@@ -64,7 +66,6 @@ function openFullScreenPlayerMobile() {
         fixedOverlayChildElems.forEach((elem) => (elem.style.position = "fixed"));
         mainElem.style.display = "none";
         overlayElem.style.position = "absolute";
-        timeline.bind(overlayTimelineElems);
         setVideoPlayerState(true);
       },
       { once: true }
