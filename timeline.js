@@ -98,9 +98,9 @@ export class Timeline {
     this.el = el;
     this.el.runtimeTimestamp.textContent = this.getTimestamp(this.totalRuntime);
     this.el.timeline.removeEventListener("mousedown", this.pointerDownHandler);
-    this.el.timeline.removeEventListener("touchstart", this.pointerDownHandler);
+    this.el.timeline.removeEventListener("touchstart", this.pointerDownHandler, { passive: true });
     this.el.timeline.addEventListener("mousedown", this.handlePointerDown.bind(this));
-    this.el.timeline.addEventListener("touchstart", this.handlePointerDown.bind(this));
+    this.el.timeline.addEventListener("touchstart", this.handlePointerDown.bind(this), { passive: true });
   }
 
   /**
