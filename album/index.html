@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supernatural - EP by NewJeans</title>
+  <base href="..">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="normalize.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<!-- TODO: background--album -->
+
+<body class="background--album">
+  <!-- Re-usable SVGs -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+      <symbol id="skip-prev" viewBox="0 -960 960 960">
+        <path d="M194.67-214.67v-530.66h84v530.66h-84Zm570.66 0L376-480l389.33-265.33v530.66Z" />
+      </symbol>
+
+      <symbol id="pause-mobile" viewBox="0 -960 960 960">
+        <path d="M560-200v-560h160v560H560Zm-320 0v-560h160v560H240Z" />
+      </symbol>
+
+      <symbol id="pause-desktop" viewBox="0 -960 960 960">
+        <path d="M549-171v-620h212v620H549Zm-350 0v-620h212v620H199Z" />
+      </symbol>
+
+      <symbol id="skip-next" viewBox="0 -960 960 960">
+        <path d="M681.33-214.67v-530.66h84v530.66h-84Zm-486.66 0v-530.66L584-480 194.67-214.67Z" />
+      </symbol>
+
+      <symbol id="back" viewBox="0 -960 960 960">
+        <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+      </symbol>
+
+      <symbol id="videos" viewBox="0 -960 960 960">
+        <path
+          d="M378.09-296.65 663.35-480 378.09-663.35v366.7ZM111.87-111.87v-736.26h736.26v736.26H111.87Zm91-91h554.26v-554.26H202.87v554.26Zm0 0v-554.26 554.26Z" />
+      </symbol>
+
+      <symbol id="play" viewBox="0 -960 960 960">
+        <path d="M311.87-185.41v-589.18L775.07-480l-463.2 294.59Z" />
+      </symbol>
+
+      <symbol id="home" viewBox="0 -960 960 960">
+        <path d="M151.87-111.87v-492.2L480-850.28l328.13 246.13v492.28H561.91v-290.04H398.09v290.04H151.87Z" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <section class="player">
+    <div class="player__img-wrapper">
+      <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="player__img">
+    </div>
+
+    <h1 class="player__title">Supernatural</h1>
+    <p class="player__description">NewJeans</p>
+
+    <div class="player__controls">
+      <button class="player__skip-btn">
+        <svg height="24px" width="24px" fill="#ffffff">
+          <use href="#skip-prev" />
+        </svg>
+      </button>
+
+      <button class="player__btn">
+        <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--mobile">
+          <use href="#pause-mobile" />
+        </svg>
+        <svg height="24px" width="24px" class="player__btn-icon player__btn-icon--desktop">
+          <use href="#pause-desktop" />
+        </svg>
+      </button>
+
+      <button class="player__skip-btn">
+        <svg height="24px" width="24px" fill="#ffffff">
+          <use href="#skip-next" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="player__timeline-wrapper">
+      <span class="player__timestamp">0:00</span>
+      <div class="player__timeline">
+        <div class="player__elapsed"></div>
+      </div>
+      <span class="player__timestamp">2:20</span>
+    </div>
+
+    <button class="player__videos">
+      <svg height="24px" width="24px" fill="#ffffff">
+        <use href="#videos" />
+      </svg>
+    </button>
+  </section>
+
+  <section>
+    <div id="main">
+      <section class="header">
+        <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="header__img">
+        <h1 class="header__title">Supernatural</h1>
+        <img src="assets/albums/newjeans.jpeg" alt="Artist profile picture" class="header__pfp">
+        <span class="header__artist">NewJeans</span>
+        <p class="header__description">EP • 2024</p>
+        <button class="header__btn">
+          <svg width="24px" height="24px" class="header__btn-icon">
+            <use xlink:href="#play"></use>
+          </svg>
+        </button>
+      </section>
+
+      <div class="album-fade"></div>
+
+      <table class="tracklist">
+        <thead class="tracklist__head">
+          <tr>
+            <th class="tracklist__header tracklist__header--number">#</th>
+            <th class="tracklist__header tracklist__header--title">Title</th>
+            <th class="tracklist__header tracklist__header--plays">Plays</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="track__number">1</td>
+            <td class="track__main">
+              <p class="track__name">Supernatural</p>
+              <p class="track__artist">NewJeans</p>
+            </td>
+            <td class="track__plays">107,087,544</td>
+          </tr>
+          <tr>
+            <td class="track__number">2</td>
+            <td class="track__main">
+              <p class="track__name">Right Now</p>
+              <p class="track__artist">NewJeans</p>
+            </td>
+            <td class="track__plays">40,963,607</td>
+          </tr>
+          <tr>
+            <td class="track__number">3</td>
+            <td class="track__main">
+              <p class="track__name">Supernatural (Instrumental)</p>
+              <p class="track__artist">NewJeans</p>
+            </td>
+            <td class="track__plays">3,089,041</td>
+          </tr>
+          <tr>
+            <td class="track__number">4</td>
+            <td class="track__main">
+              <p class="track__name">Right Now (Instrumental)</p>
+              <p class="track__artist">NewJeans</p>
+            </td>
+            <td class="track__plays">1,957,709</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="tracklist-summary">4 songs • 11 min 42 sec</p>
+
+      <a href=".." class="home-link">
+        <svg height="24px" width="24px" fill="#ffffff" class="home-link__icon--home">
+          <use href="#home" />
+        </svg>
+
+        <svg height="24px" width="24px" fill="#ffffff" class="home-link__icon--back">
+          <use href="#back" />
+        </svg>
+      </a>
+    </div>
+
+    <section class="overlay" id="overlay" style="display: none;">
+      <video src="assets/albums/supernatural.mp4" autoplay muted loop class="overlay__video fixed-when-overlaid"
+        id="overlay__video"></video>
+
+      <button id="back-btn" class="overlay__back fixed-when-overlaid">
+        <svg height="24px" width="24px" fill="#ffffff">
+          <use href="#back" />
+        </svg>
+      </button>
+
+      <div class="extra-player">
+        <div class="extra-player__img-wrapper">
+          <img src="assets/albums/supernatural.jpeg" alt="Album cover" class="extra-player__img">
+        </div>
+
+        <h3 class="extra-player__title">Supernatural</h3>
+        <p class="extra-player__description">NewJeans</p>
+
+        <div class="extra-player__timeline-wrapper">
+          <div class="extra-player__timeline">
+            <div class="extra-player__elapsed"></div>
+          </div>
+          <span class="extra-player__timestamp">0:00</span>
+          <span class="extra-player__timestamp extra-player__timestamp--right">2:20</span>
+        </div>
+
+        <div class="extra-player__controls">
+          <button class="extra-player__skip-btn">
+            <svg height="32px" width="32px" fill="#ffffff">
+              <use href="#skip-prev" />
+            </svg>
+          </button>
+
+          <button class="extra-player__btn">
+            <svg height="32px" width="32px" class="extra-player__btn-icon" fill="#000000">
+              <use href="#pause-mobile" />
+            </svg>
+          </button>
+
+          <button class="extra-player__skip-btn">
+            <svg height="32px" width="32px" fill="#ffffff">
+              <use href="#skip-next" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <section class="info-card">
+        <h2 class="info-card__title">NewJeans</h2>
+        <p class="info-card__subtitle">15,190,183 monthly listeners</p>
+        <p>NewJeans (MINJI, HANNI, DANIELLE, HAERIN and HYEIN) made their debut on July 22, 2022 as the first group to
+          debut from ADOR, an independent label under HYBE led by Hee Jin Min.</p>
+      </section>
+
+      <div class="overlay__fade"></div>
+    </section>
+  </section>
+
+  <script src="script.js" type="module"></script>
+</body>
+
+</html>

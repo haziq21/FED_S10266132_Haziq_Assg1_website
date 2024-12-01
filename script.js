@@ -14,31 +14,25 @@ const overlayTimelineElems = {
 };
 const timeline = new Timeline(140_000, mainTimelineElems);
 
-let mainPageScroll;
-
 const mediaQuery = window.matchMedia("(min-width: 600px)");
 mediaQuery.addEventListener("change", handleMediaQueryChange);
 handleMediaQueryChange(mediaQuery);
+
 // The back button on mobile will close the full-screen video player
-document.getElementById("back-btn").addEventListener("click", () => {
-  closeFullScreenPlayerMobile();
-  timeline.bind(mainTimelineElems);
-});
+document.getElementById("back-btn").addEventListener("click", closeFullScreenPlayerMobile);
+
+let mainPageScroll;
+const overlayElem = document.getElementById("overlay");
+const mainElem = document.getElementById("main");
+const fixedOverlayChildElems = document.querySelectorAll(".overlay .fixed-when-overlaid");
 
 function handleMediaQueryChange(e) {
   if (e.matches) {
     document.querySelector(".player").removeEventListener("click", openFullScreenPlayerMobile);
   } else {
-    document.querySelector(".player").addEventListener("click", () => {
-      openFullScreenPlayerMobile();
-      timeline.bind(overlayTimelineElems);
-    });
+    document.querySelector(".player").addEventListener("click", openFullScreenPlayerMobile);
   }
 }
-
-const overlayElem = document.getElementById("overlay");
-const mainElem = document.getElementById("main");
-const fixedOverlayChildElems = document.querySelectorAll(".overlay .fixed-when-overlaid");
 
 function openFullScreenPlayerMobile() {
   // Preserve the scroll position of the main page
@@ -65,6 +59,7 @@ function openFullScreenPlayerMobile() {
         mainElem.style.display = "none";
         overlayElem.style.position = "absolute";
         window.scrollTo(0, 0);
+        timeline.bind(overlayTimelineElems);
       },
       { once: true }
     );
@@ -83,5 +78,12 @@ function closeFullScreenPlayerMobile() {
   window.scrollTo(0, mainPageScroll);
 
   // Wait for the overlay to finish moving into place before finalising the styles
-  overlayElem.addEventListener("transitionend", () => (overlayElem.style.display = "none"), { once: true });
+  overlayElem.addEventListener(
+    "transitionend",
+    () => {
+      overlayElem.style.display = "none";
+      timeline.bind(mainTimelineElems);
+    },
+    { once: true }
+  );
 }
