@@ -21,14 +21,22 @@ const timeline = new Timeline(140_000, mainTimelineElems, false);
 // The back button on mobile will close the full-screen video player
 document.getElementById("back-btn").addEventListener("click", closeFullScreenPlayerMobile);
 
+// Get the DOM elements needed to open/close the video players
 const overlayElem = document.getElementById("overlay");
 const mainElem = document.getElementById("main");
 const fixedOverlayChildElems = document.querySelectorAll(".overlay .fixed-when-overlaid");
 
+// Media query to update state-dependent styles when the screen size changes
 const mediaQuery = window.matchMedia("(min-width: 600px)");
 mediaQuery.addEventListener("change", handleMediaQueryChange);
 handleMediaQueryChange(mediaQuery);
 
+/**
+ * Update relevant video player styles and event listeners when the screen size changes
+ * from mobile to desktop or vice versa. This should also be run when the document loads
+ * to register event listeners for the buttons that open/close the video players.
+ * @param {MediaQueryList} e
+ */
 function handleMediaQueryChange(e) {
   if (e.matches) {
     document.getElementById("video-player-btn").addEventListener("click", toggleVideoPlayerDesktop);
@@ -43,6 +51,9 @@ function handleMediaQueryChange(e) {
   }
 }
 
+/**
+ * Open the full-screen video player on mobile.
+ */
 function openFullScreenPlayerMobile() {
   timeline.bind(overlayTimelineElems);
 
@@ -73,6 +84,9 @@ function openFullScreenPlayerMobile() {
   });
 }
 
+/**
+ * Close the full-screen video player (i.e. go back to the homepage) on mobile.
+ */
 function closeFullScreenPlayerMobile() {
   timeline.bind(mainTimelineElems);
 
@@ -96,6 +110,20 @@ function closeFullScreenPlayerMobile() {
   );
 }
 
+/**
+ * Open or close the video player on desktop.
+ */
+function toggleVideoPlayerDesktop() {
+  const currentlyOpen = getDesktopVideoPlayerState();
+  overlayElem.style.display = currentlyOpen ? "none" : "block";
+  setVideoPlayerState(!currentlyOpen);
+}
+
+/**
+ * Update styles and bind the `Timeline` to the appropriate DOM elements, to be
+ * called when the screen size changes from a mobile size to a desktop size.
+ * @param {boolean} playerIsOpen Whether the video player is open
+ */
 function transitionFromMobileToDesktop(playerIsOpen) {
   overlayElem.style.position = "relative";
   overlayElem.style.top = "unset";
@@ -128,16 +156,18 @@ function transitionFromDesktopToMobile(playerIsOpen) {
   }
 }
 
-function toggleVideoPlayerDesktop() {
-  const currentlyOpen = getDesktopVideoPlayerState();
-  overlayElem.style.display = currentlyOpen ? "none" : "block";
-  setVideoPlayerState(!currentlyOpen);
-}
-
+/**
+ * Gets the state of the video player (open or closed) from LocalStorage.
+ * @returns {boolean}
+ */
 function getDesktopVideoPlayerState() {
   return JSON.parse(localStorage.getItem("desktopVideoPlayerOpen") ?? "false");
 }
 
+/**
+ * Sets the state of the video player (open or closed) in LocalStorage.
+ * @param {boolean} open Whether the video player is open.
+ */
 function setVideoPlayerState(open) {
   localStorage.setItem("desktopVideoPlayerOpen", JSON.stringify(open));
 }
